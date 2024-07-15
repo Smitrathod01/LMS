@@ -1,0 +1,11 @@
+admin : smit
+	smit123@gmail.com
+	smit123
+
+
+lecturer : author name
+	   name(first 4 letters)123456
+
+
+
+ 

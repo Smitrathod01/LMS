@@ -1,0 +1,22 @@
+.add-course-form{
+    padding-left: 2rem;
+    margin: 5rem 0;
+}
+
+.add-course-form p{
+    margin: 2rem 0;
+}
+
+.add-course-form p label{
+    width: 10rem;
+}
+.add-course-form p input{
+    width: 40rem;
+}
+.add-course-form p textarea{
+    width: 40rem;
+}
+
+.add-course-form input[type=submit]{
+    width: 5rem;
+}

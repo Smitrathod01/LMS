@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}All Categories{% endblock  %}
+{% block blockdata %}
+<section class="py-5 py-md-11">
+    <div class="container" >
+        <div class="text-center mb-8" data-aos="zoom-in">
+            <h1 class="text-uppercase mb-1">Trending Categories</h1>
+            <p class="font-size-lg mb-0 text-capitalize">Have a look in out top categories.</p>
+        </div>
+        <div class="row row-cols-md-3 row-cols-xl-4 mb-4" data-aos="zoom-out">
+            {% for i in category %}
+            
+            <div class="col-md mb-6">
+                <!-- Card -->
+                <a href="catcourses/{{i.name}}" class="card card-hover-image px-md-5 py-md-5 px-4 py-8 text-center position-relative h-180p" style="background-image: url({{i.cat_image}})">
+                    <div class="my-auto">
+                        <!-- Image -->
+                        <div class="text-white hover-image display-4">
+                            <i class="{{i.icon}}"></i>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="card-footer p-0">
+                            <h5 class="mb-0 line-clamp-1 text-white">{{i.name}}</h5>
+                            {% comment %} <p class="mb-0 line-clamp-1 text-white">Over 960 Courses</p> {% endcomment %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+       
+    </div>
+</section>
+{% endblock  %}

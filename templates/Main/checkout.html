@@ -1,0 +1,193 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Checkout{% endblock title %}
+{% load course_tags %}
+{% block blockdata %}
+<header class="py-8 py-md-10" style="background-image: none;" data-aos="zoom-out">
+    <div class="container text-center py-xl-2">
+        <h1 class="display-4 fw-semi-bold mb-0">Checkout</h1>
+        
+    </div>
+    <!-- Img -->
+    <img class="d-none img-fluid" src="...html" alt="...">
+</header>
+
+
+<!-- SHOP CHECKOUT
+================================================== -->
+<div class="container pb-6 pb-xl-10">
+    {% comment %} <form name="checkout" method="POST" class="checkout woocommerce-checkout" action="{% url "order" %}" novalidate=""> {% endcomment %}
+        
+        
+        <div id="order_review" class="woocommerce-checkout-review-order" data-aos="slide-left">
+            <div class="woocommerce-checkout-review-order-inner">
+                <h3 id="order_review_heading">Your order</h3>
+                <table class="shop_table woocommerce-checkout-review-order-table">
+                    <thead>
+                        <tr>
+                            <th class="product-name">{{course.title}}</th>
+                            <th class="product-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cart_item">
+                            <td class="product-name">
+                                Price
+                                
+                            </td>
+                            <td class="product-total">
+                                <span class="woocommerce-Price-amount amount">
+                                    {% comment %} <span class="woocommerce-Price-currencySymbol">$</span> {% endcomment %}
+                                    ₹ {{course.price}}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="cart_item">
+                            <td class="product-name">
+                                Discount
+                               
+                            </td>
+                            <td class="product-total">
+                                <span class="woocommerce-Price-amount amount">
+                                    {% comment %} <span class="woocommerce-Price-currencySymbol">$</span> {% endcomment %}
+                                    {{course.discount}}%
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="cart-subtotal">
+                            <th>Subtotal</th>
+                            <td><span class="woocommerce-Price-amount amount">
+                                {% comment %} <span class="woocommerce-Price-currencySymbol">$</span> {% endcomment %}
+                                ₹ {% discount_calculation course.price course.discount %}
+                            </span></td>
+                        </tr>
+
+                        <tr class="order-total">
+                            <th>Total</th>
+                            <td><strong><span class="woocommerce-Price-amount  amount">
+                                ₹ 
+                                
+                            </span>
+                                 <span class="woocommerce-Price-amount final-amount amount">
+                                   
+                                    {% discount_calculation course.price course.discount %}
+                                </span></strong> </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div id="payment" class="woocommerce-checkout-payment">
+                {% comment %} <ul class="wc_payment_methods payment_methods methods">
+                    <li class="wc_payment_method payment_method_bacs">
+                        <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" data-order_button_text="">
+
+                        <label for="payment_method_bacs">Direct bank transfer </label>
+                        <div class="payment_box payment_method_bacs" style="display: block;">
+                            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                        </div>
+                    </li>
+
+                    <li class="wc_payment_method payment_method_cheque">
+                        <input id="payment_method_cheque" type="radio" class="input-radio" name="payment_method" value="cheque" data-order_button_text="">
+
+                        <label for="payment_method_cheque">Check payments </label>
+                        <div class="payment_box payment_method_cheque d-none" style="display: block;">
+                            <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                        </div>
+                    </li>
+
+                    <li class="wc_payment_method payment_method_cod">
+                        <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" checked="checked" data-order_button_text="">
+
+                        <label for="payment_method_cod">Cash on delivery </label>
+                        <div class="payment_box payment_method_cod d-none" style="display: block;">
+                            <p>Pay with cash upon delivery.</p>
+                        </div>
+                    </li>
+
+                    <li class="wc_payment_method payment_method_paypal">
+                        <input id="payment_method_paypal" type="radio" class="input-radio" name="payment_method" value="paypal" data-order_button_text="Proceed to PayPal">
+
+                        <label for="payment_method_paypal">PayPal
+                            <img src="../../../www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png" alt="PayPal acceptance mark">
+                            <a href="https://www.paypal.com/gb/webapps/mpp/paypal-popup" class="about_paypal">What is PayPal?</a>
+                        </label>
+
+                        <div class="payment_box payment_method_paypal d-none" style="display: block;">
+                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                        </div>
+                    </li>
+                </ul> {% endcomment %}
+                <div class="form-row place-order">
+                    <a href="#" id="test-mode" class=" btn btn-primary btn-block">
+                        PLACE ORDER
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% comment %} </form> {% endcomment %}
+    {% comment %} <button id='test-mode'>beat me</button> {% endcomment %}
+</div>
+ <script src="
+https://checkout.razorpay.com/v1/checkout.js"
+></script>
+<script>
+    
+    
+    var test = document.querySelector('.final-amount').innerHTML;
+    console.log(test)
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const checkOut = document.querySelector('#test-mode');
+        
+        checkOut.addEventListener('click',function(e){
+        
+                test1=Number(test)
+                //let price = document.querySelector('#total-price').textContent;
+                //console.log(price)
+                const options = {
+                    key: 'rzp_test_8ydfJQKGSKoloz', // Replace with your actual API key
+                    amount: (test1*100), // Amount in paise (e.g., 50000 for ₹500)
+                    currency: 'INR', // Currency
+                    name: 'LearniPhi', // Name of your company or website
+                    description: 'Your Order Details', // Description of the product or service
+                    image: 'data:image/jpeg;base64,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', // URL of your company logo
+                    handler: function(response) {
+                        // Handle successful payment
+                        /*$.AJAX({
+                            url:'http://127.0.0.1:8000/success'
+                        }) */
+                        window.location.replace("http://127.0.0.1:8000/success/{{course.slug}}");
+                        alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+                    },
+                    prefill: {
+                        name: 'Test User',
+                        email: 'test@example.com'
+                    },
+                    theme: {
+                        color: '#2b2a26'
+                    },
+                    payment_capture:true,
+                    prefill: {
+                        name: '{{user.username}}', // Pre-fill customer's name
+                        email: '{{user.email}}', // Pre-fill customer's email
+                        contact: '9898876545' // Pre-fill customer's phone number
+                    }
+                };
+        
+                const rzp = new Razorpay(options);
+                rzp.open();
+        
+                
+        
+            });
+        
+        });
+        
+  </script>
+
+
+{% endblock  %}

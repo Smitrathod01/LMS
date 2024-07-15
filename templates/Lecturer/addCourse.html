@@ -1,0 +1,38 @@
+ {% extends "index.html" %}
+{% block title %}{{content}}{% endblock title %}
+{% block blockdata %} 
+<div class="container mb-6 mb-xl-8 z-index-2">
+  <div class="d-xl-flex align-items-center">
+      
+      
+    <a href="{% url "lecturer" %}">  <div class="ms-xl d-xl-flex flex-wrap" style="position:absolute;right:-5rem;top:-1rem">
+          
+          
+         <div class="mb-4 mb-xl-0 ms-xl-6">
+              <!-- Search -->
+              
+               <div class="input-group input-group-filter">
+                      
+                    <div class="input-group-append">
+                          <button class="btn btn-sm btn-outline-dark  text-dark bg-transparent" >
+                              Go Back
+
+                          </button>
+                      </div>
+                  </div>
+                
+          </div>
+          
+         
+      </div></a>
+  </div>
+</div>
+ 
+  <h1 style="text-align:center">{{content}}</h1>
+ <form class="add-course-form" method="post" enctype="multipart/form-data" data-aos="fade-out" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add">
+  </form> 
+
+{% endblock blockdata %}
